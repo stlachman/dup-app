@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Header = (props) => (
+const Header = props => (
     <header className="top">
-        <h1>Strengh Training Tracker</h1>
+        <h1>Lift Some Weights</h1>
         <h3 className="tagline">
-            <span>{props.tagline}</span>
+            <span>{props.subTitle}</span>
         </h3>
     </header>
 );
