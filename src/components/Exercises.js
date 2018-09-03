@@ -7,6 +7,7 @@ class Exercises extends React.Component {
             <div className="logs">
                 <h2>Choose an Exercise</h2>
                 <AddExerciseForm addExercise={this.props.addExercise}/>
+                <button onClick={this.props.loadSampleExercises}>Load Sample Exercises</button>
             </div>
         )
     }
