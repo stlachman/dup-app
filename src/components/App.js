@@ -4,12 +4,27 @@ import Exercises from './Exercises';
 import WorkoutSchedule from './WorkoutSchedule';
 import Exercise from './Exercise';
 import sampleExercises from '../sample-exercises';
+import base from '../base';
+require('dotenv').config();
 
 class App extends React.Component {
     state = {
         exercises: {},
         routine: {}
     };
+
+    componentDidMount() {
+        const { params } = this.props.match;
+        this.ref = base.syncState(`${params.programId}/exercises`, {
+            context: this,
+            state: 'exercises'
+        });
+    }
+
+    componentWillUnmount() {
+        base.removeBinding(this.ref);
+    }
+
     addExercise = exercise => {
         // 1. Take a copy of the existing state
         const exercises = {...this.state.exercises};
