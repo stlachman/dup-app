@@ -1,8 +1,11 @@
 import React from "react";
 
 class Exercise extends React.Component {
+    handleClick = () => {
+        this.props.addToRoutine(this.props.index);
+    }
     render() {
-        const {exerciseName, weight, sets, reps, rpe, rating }= this.props.details;
+        const {exerciseName, weight, sets, reps, rpe, rating } = this.props.details;
         return (
             <li className="exercise">
                 <h3 className="exercise-name">
@@ -13,7 +16,7 @@ class Exercise extends React.Component {
                 <p>Reps: {reps}</p>     
                 <p>RPE: {rpe}</p>     
                 <p>Rating: {rating}</p>
-                <button>Add To Workout</button> 
+                <button onClick={this.handleClick}>Add To Workout</button> 
             </li>
         )
     }
