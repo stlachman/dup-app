@@ -3,6 +3,8 @@ import React from 'react';
 class WorkoutSchedule extends React.Component {
     renderRoutine = key => {
         const ex = this.props.exercises[key];
+        // Make sure the exercise is loaded before we continue
+        if(!ex) return null;
         return <li key={key}>{ex.exerciseName}</li>
     }
     render() {

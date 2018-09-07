@@ -5,7 +5,7 @@ import WorkoutSchedule from './WorkoutSchedule';
 import Exercise from './Exercise';
 import sampleExercises from '../sample-exercises';
 import base from '../base';
-require('dotenv').config();
+
 
 class App extends React.Component {
     state = {
@@ -15,10 +15,20 @@ class App extends React.Component {
 
     componentDidMount() {
         const { params } = this.props.match;
+        // first reinstate our localStorage
+        const localStorageRef = localStorage.getItem(params.programId);
+        if (localStorageRef) {
+            this.setState({ routine: JSON.parse(localStorageRef) })
+        }
         this.ref = base.syncState(`${params.programId}/exercises`, {
             context: this,
             state: 'exercises'
         });
+    }
+
+    componentDidUpdate() {
+        console.log(this.state.routine);
+        localStorage.setItem(this.props.match.params.programId, JSON.stringify(this.state.routine));
     }
 
     componentWillUnmount() {
