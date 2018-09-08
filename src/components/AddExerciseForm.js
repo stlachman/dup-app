@@ -24,7 +24,7 @@ class AddExerciseForm extends React.Component {
     render() {
         return (
             <form className="fish-edit" onSubmit={this.createExercise}>
-                <input name="exercise-name" ref={this.exerciseRef} type="text" placeholder="Exercise Name" />
+                <input name="exerciseName" ref={this.exerciseRef} type="text" placeholder="Exercise Name" />
                 <input name="weight" type="text" ref={this.weightRef} placeholder="Weight"/>
                 <input name="sets" type="text" ref={this.setsRef} placeholder="Sets" />
                 <input name="repetitions" type="text" ref={this.repsRef} placeholder="Repetitions" />

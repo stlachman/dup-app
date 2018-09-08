@@ -44,6 +44,15 @@ class App extends React.Component {
         this.setState({ exercises });
     }
 
+    updateExercise = (key, updatedExercise) => {
+        // 1. Take a copy of the current state
+        const exercises = {...this.state.exercises};
+        // 2. Update that state
+        exercises[key] = updatedExercise;
+        // 3. Set that to state
+        this.setState({ exercises });
+    }
+
     loadSampleExercises = () => {
         this.setState({ exercises: sampleExercises  });
     }
@@ -72,8 +81,16 @@ class App extends React.Component {
                         
                     </ul>
                 </div>
-                <WorkoutSchedule exercises={this.state.exercises} routine={this.state.routine}/>
-                <Exercises addExercise={this.addExercise} loadSampleExercises={this.loadSampleExercises}/>
+                <WorkoutSchedule 
+                    exercises={this.state.exercises} 
+                    routine={this.state.routine}
+                />
+                <Exercises 
+                    addExercise={this.addExercise} 
+                    updateExercise={this.updateExercise} 
+                    loadSampleExercises={this.loadSampleExercises}
+                    exercises={this.state.exercises}
+                />
             </div>
         )
     }
